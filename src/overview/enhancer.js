@@ -1,6 +1,7 @@
 import { compose } from 'redux'
 import ReduxQuerySync from 'redux-query-sync'
 
+import history from '../options/history'
 import * as selectors from './selectors'
 import * as actions from './actions'
 import * as constants from './constants'
@@ -17,6 +18,7 @@ const parseBool = str => str === 'true'
 const locationSync = ReduxQuerySync.enhancer({
     replaceState: true, // We don't want back/forward to stop at every change.
     initialTruth: 'location', // Initialise store from current location.
+    history,
     params: {
         query: {
             selector: selectors.query,
