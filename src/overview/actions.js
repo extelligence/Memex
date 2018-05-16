@@ -269,7 +269,10 @@ const stripTagPattern = tag =>
         .split('+')
         .join(' ')
 
-export const setQueryTagsDomains = (input, isEnter) => (dispatch, getState) => {
+export const setQueryTagsDomains = (input, isEnter = true) => (
+    dispatch,
+    getState,
+) => {
     const removeFromInputVal = term =>
         (input = input.replace(isEnter ? term : `${term} `, ''))
 

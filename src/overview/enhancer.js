@@ -13,6 +13,7 @@ import {
 import { selectors as filters, actions as filterActs } from './filters'
 
 const parseBool = str => str === 'true'
+const parseNumber = str => Number(str)
 
 // Keep search query in sync with the query parameter in the window location.
 const locationSync = ReduxQuerySync.enhancer({
@@ -22,38 +23,39 @@ const locationSync = ReduxQuerySync.enhancer({
     params: {
         query: {
             selector: selectors.query,
-            action: query => actions.setQueryTagsDomains(query, true),
+            action: actions.setQueryTagsDomains,
             defaultValue: '',
         },
         startDate: {
             selector: selectors.startDate,
-            action: startDate => actions.setStartDate(Number(startDate)),
-            defaultValue: undefined,
+            action: actions.setStartDate,
+            stringToValue: parseNumber,
         },
         endDate: {
             selector: selectors.endDate,
-            action: endDate => actions.setEndDate(Number(endDate)),
-            defaultValue: undefined,
+            action: actions.setEndDate,
+            stringToValue: parseNumber,
         },
         showOnlyBookmarks: {
             selector: filters.onlyBookmarks,
-            action: onlyBookmarks =>
-                filterActs.toggleBookmarkFilter(parseBool(onlyBookmarks)),
+            action: filterActs.toggleBookmarkFilter,
+            stringToValue: parseBool,
             defaultValue: false,
         },
         tags: {
             selector: filters.tagsStringify,
-            action: tags => filterActs.setTagFilters(tags),
+            action: filterActs.setTagFilters,
             defaultValue: '',
         },
         domains: {
             selector: filters.domainsStringify,
-            action: domains => filterActs.setDomainFilters(domains),
+            action: filterActs.setDomainFilters,
             defaultValue: '',
         },
         install: {
             selector: onboarding.isVisible,
-            action: value => onboardingActs.setVisible(parseBool(value)),
+            action: onboardingActs.setVisible,
+            stringToValue: parseBool,
             defaultValue: false,
         },
     },
