@@ -8294,9 +8294,9 @@ redux-observable@^0.14.1:
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-0.14.1.tgz#9f3d870c69388fdc427ded6770a3e326f3b69693"
 
-"redux-query-sync@git+https://github.com/WorldBrain/redux-query-sync.git":
+redux-query-sync@^0.1.7:
   version "0.1.7"
-  resolved "git+https://github.com/WorldBrain/redux-query-sync.git#546563980d3a8f1b1cb8ff3f60668059fda724ca"
+  resolved "https://registry.yarnpkg.com/redux-query-sync/-/redux-query-sync-0.1.7.tgz#fb2e6b0c5649a4f5e2c6e44bfe86b8a5f09699e8"
   dependencies:
     history "^4.6.3"
     postinstall-build "^3.0.1"
